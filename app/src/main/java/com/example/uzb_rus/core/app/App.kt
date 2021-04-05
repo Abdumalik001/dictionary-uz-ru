@@ -8,8 +8,8 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        db = Room.databaseBuilder(applicationContext, WordDB::class.java, "uz.db")
-            .createFromAsset("uz.db")
+        db = Room.databaseBuilder(applicationContext, WordDB::class.java, "mybase.db")
+           // .createFromAsset("ru.db")
             .build()
 
     }

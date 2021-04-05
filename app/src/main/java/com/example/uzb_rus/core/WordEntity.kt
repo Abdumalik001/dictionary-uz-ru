@@ -1,18 +1,19 @@
 package com.example.uzb_rus.core
 
-import androidx.annotation.NonNull
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "WORDS")
 data class WordEntity(
 
-    var word: String,
-    var meaning: String,
-    @NonNull
-    var isFav: Int = 0,
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    val word: String?,
+    val meaning: String?,
+    @ColumnInfo(defaultValue = "0")
+    var isfav: Int = 0
+
 ) {
-    constructor() : this("", "")
+    @PrimaryKey(autoGenerate = true)
+    var id: Int=0
+
 }
