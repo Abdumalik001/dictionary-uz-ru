@@ -2,21 +2,21 @@ package com.example.uzb_rus.core.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.uzb_rus.R
 import com.example.uzb_rus.core.WordEntity
-import kotlinx.android.extensions.LayoutContainer
+import com.example.uzb_rus.databinding.ItemWordBinding
 
 
 class WordAdapter(ctx: Context) : ListAdapter<WordEntity, WordAdapter.VH>(WordCallBack()) {
     private val inflater = LayoutInflater.from(ctx)
+    private lateinit var binding: ItemWordBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val v = inflater.inflate(R.layout.item_word, parent, false)
-        return VH(v)
+
+        binding = ItemWordBinding.inflate(inflater, parent, false)
+
+        return VH(binding)
 
     }
 
@@ -25,11 +25,13 @@ class WordAdapter(ctx: Context) : ListAdapter<WordEntity, WordAdapter.VH>(WordCa
         holder.onBind(word)
     }
 
-    class VH(override val containerView: View) : RecyclerView.ViewHolder(containerView),
-        LayoutContainer {
+    class VH(val bind: ItemWordBinding) : RecyclerView.ViewHolder(bind.root) {
+
 
         fun onBind(wordEntity: WordEntity) {
-
+            bind.word.text = wordEntity.word
+            bind.id.text = wordEntity.id.toString()
+            // bind.meaning.text = wordEntity.meaning
         }
 
     }

@@ -1,46 +1,31 @@
 package com.example.uzb_rus
 
+
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import com.example.uzb_rus.core.WordEntity
-import com.example.uzb_rus.core.adapter.WordAdapter
-import com.example.uzb_rus.core.app.App
-import com.example.uzb_rus.core.db.WordDao
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
+import com.example.uzb_rus.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
-    private val adapter by lazy(LazyThreadSafetyMode.NONE) { WordAdapter(this) }
-
-    private lateinit var rv: RecyclerView
-
-    private var dao: WordDao? = null
-    private var list: MutableList<WordEntity>? = null
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        dao = App.getDatabase().wordDao()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        window.statusBarColor = Color.parseColor("#994A4A48")
+//        navController = Navigation.findNavController(this, R.id.fragment)
+//        NavigationUI.setupActionBarWithNavController(this, navController)
 
-        rv = findViewById(R.id.rv)
-        rv.adapter = adapter
-
-        GlobalScope.launch {
-            addData()
-            displayData()
-        }
-        adapter.submitList(list)
     }
 
-    private fun addData() {
-        for (i in 0..50) {
-            dao!!.insert(WordEntity( "salom $i", "salom salom $i"))
-        }
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
     }
 
 
-    private fun displayData() {
-        list = dao!!.getAllData()
-    }
 }

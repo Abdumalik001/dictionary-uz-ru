@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ru_uz"
+        android:iconTint="@color/black"
+        android:title="Ruscha-O`zbekcha"
+
+        />
+    <item
+        android:id="@+id/uz_ru"
+        android:iconTint="@color/black"
+        android:title="O`zbekcha_Ruscha"
+
+        />
+    <item
+        android:id="@+id/favorites"
+        android:iconTint="@color/black"
+        android:title="Favorites"
+        android:icon="@drawable/ic_baseline_favorite_border_24"
+
+        />
+    <item
+        android:id="@+id/exit"
+        android:iconTint="@color/black"
+        android:title="Exit" />
+</menu>
