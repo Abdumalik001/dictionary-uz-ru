@@ -4,12 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.uzb_rus.core.WordEntity
 
 @Dao
 interface WordDao {
 
-    @Insert
+    @Update
     suspend fun insert(vararg wordEntity: WordEntity)
 
     @Query("Delete from  WORDS")
@@ -21,6 +22,5 @@ interface WordDao {
 
     @Query("select* from WORDS where id=:id")
     fun getWordById(id: Int): LiveData<WordEntity>
-
 
 }

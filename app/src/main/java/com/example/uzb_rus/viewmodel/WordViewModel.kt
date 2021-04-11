@@ -1,6 +1,7 @@
 package com.example.uzb_rus.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -25,6 +26,7 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
     fun insertWord(word: WordEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insertWord(word)
+            Log.d("DDDD", "insertWord: inserted")
         }
     }
 

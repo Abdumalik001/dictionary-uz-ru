@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.uzb_rus.core.WordEntity
+import androidx.room.migration.Migration as Migration1
 
 @Database(entities = [WordEntity::class], version = 1, exportSchema = false)
 abstract class WordDB : RoomDatabase() {

@@ -39,9 +39,7 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         wordViewModel.readAllWord.observe(viewLifecycleOwner, Observer {
-            if (it.size > 5000) {
                 loadListFragment(it)
-            }
         })
 
         super.onViewCreated(view, savedInstanceState)
